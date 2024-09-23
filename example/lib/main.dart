@@ -12,8 +12,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformImei = 'Unknown';
-  String uniqueId = "Unknown";
+  String? _platformImei = 'Unknown';
+  String? uniqueId = "Unknown";
 
   @override
   void initState() {
@@ -23,13 +23,13 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    String platformImei;
-    String idunique;
+    String? platformImei;
+    String? idunique;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       platformImei =
           await ImeiPlugin.getImei(shouldShowRequestPermissionRationale: false);
-      List<String> multiImei = await ImeiPlugin.getImeiMulti();
+      List<String>? multiImei = await ImeiPlugin.getImeiMulti();
       print(multiImei);
       idunique = await ImeiPlugin.getId();
     } on PlatformException {
